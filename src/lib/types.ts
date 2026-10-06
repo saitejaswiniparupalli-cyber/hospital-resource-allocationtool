@@ -12,7 +12,7 @@ export interface Bed {
   wardId: WardId;
   label: string;
   status: BedStatus;
-  patientId?: string;
+  patientId?: string | undefined;
 }
 
 export interface Needs {

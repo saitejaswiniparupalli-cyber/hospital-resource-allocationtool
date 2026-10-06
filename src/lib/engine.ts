@@ -99,7 +99,7 @@ export function recommend(state: AppState, p: Patient, forcedBedId?: string): Re
   (["ventilator", "oxygen", "ot"] as ResourceKey[]).forEach((r) => {
     if (p.needs[r] && itemAvailable(state, r) <= 0) issues.push(`No ${RESOURCE_LABEL[r].toLowerCase()} available`);
   });
-  const wardId = bed?.wardId ?? prefs[0];
+  const wardId: WardId = bed?.wardId ?? prefs[0] ?? "general";
   const doctor = pickStaff(state, "doctor", wardId);
   const nurse = pickStaff(state, "nurse", wardId);
   if (!doctor) issues.push("No doctor available on this shift");
