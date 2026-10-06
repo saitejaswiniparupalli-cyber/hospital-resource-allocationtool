@@ -32,7 +32,7 @@ function PatientsPage() {
   const { state, admit, discharge } = useStore();
   const [form, setForm] = useState({ name: "", age: "", condition: "", severity: "3" });
   const [needs, setNeeds] = useState<Needs>(emptyNeeds);
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<{ name?: string; age?: string; condition?: string }>({});
   const [allocId, setAllocId] = useState<string | null>(null);
   const [q, setQ] = useState("");
   const [status, setStatus] = useState("all");
@@ -40,7 +40,7 @@ function PatientsPage() {
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
-    const err: Record<string, string> = {};
+    const err: { name?: string; age?: string; condition?: string } = {};
     const name = form.name.trim();
     const age = Number(form.age);
     if (name.length < 2) err.name = "Enter the patient's full name";
