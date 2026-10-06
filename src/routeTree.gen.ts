@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AllocationRouteImport } from './routes/allocation'
+import { Route as BedsRouteImport } from './routes/beds'
+import { Route as InventoryRouteImport } from './routes/inventory'
+import { Route as PatientsRouteImport } from './routes/patients'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as StaffRouteImport } from './routes/staff'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AllocationRoute = AllocationRouteImport.update({
+  id: '/allocation',
+  path: '/allocation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BedsRoute = BedsRouteImport.update({
+  id: '/beds',
+  path: '/beds',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InventoryRoute = InventoryRouteImport.update({
+  id: '/inventory',
+  path: '/inventory',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PatientsRoute = PatientsRouteImport.update({
+  id: '/patients',
+  path: '/patients',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffRoute = StaffRouteImport.update({
+  id: '/staff',
+  path: '/staff',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/allocation': typeof AllocationRoute
+  '/beds': typeof BedsRoute
+  '/inventory': typeof InventoryRoute
+  '/patients': typeof PatientsRoute
+  '/reports': typeof ReportsRoute
+  '/staff': typeof StaffRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/allocation': typeof AllocationRoute
+  '/beds': typeof BedsRoute
+  '/inventory': typeof InventoryRoute
+  '/patients': typeof PatientsRoute
+  '/reports': typeof ReportsRoute
+  '/staff': typeof StaffRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/allocation': typeof AllocationRoute
+  '/beds': typeof BedsRoute
+  '/inventory': typeof InventoryRoute
+  '/patients': typeof PatientsRoute
+  '/reports': typeof ReportsRoute
+  '/staff': typeof StaffRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/allocation'
+    | '/beds'
+    | '/inventory'
+    | '/patients'
+    | '/reports'
+    | '/staff'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/allocation'
+    | '/beds'
+    | '/inventory'
+    | '/patients'
+    | '/reports'
+    | '/staff'
+  id:
+    | '__root__'
+    | '/'
+    | '/allocation'
+    | '/beds'
+    | '/inventory'
+    | '/patients'
+    | '/reports'
+    | '/staff'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AllocationRoute: typeof AllocationRoute
+  BedsRoute: typeof BedsRoute
+  InventoryRoute: typeof InventoryRoute
+  PatientsRoute: typeof PatientsRoute
+  ReportsRoute: typeof ReportsRoute
+  StaffRoute: typeof StaffRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/allocation': {
+      id: '/allocation'
+      path: '/allocation'
+      fullPath: '/allocation'
+      preLoaderRoute: typeof AllocationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/beds': {
+      id: '/beds'
+      path: '/beds'
+      fullPath: '/beds'
+      preLoaderRoute: typeof BedsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inventory': {
+      id: '/inventory'
+      path: '/inventory'
+      fullPath: '/inventory'
+      preLoaderRoute: typeof InventoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/patients': {
+      id: '/patients'
+      path: '/patients'
+      fullPath: '/patients'
+      preLoaderRoute: typeof PatientsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff': {
+      id: '/staff'
+      path: '/staff'
+      fullPath: '/staff'
+      preLoaderRoute: typeof StaffRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AllocationRoute: AllocationRoute,
+  BedsRoute: BedsRoute,
+  InventoryRoute: InventoryRoute,
+  PatientsRoute: PatientsRoute,
+  ReportsRoute: ReportsRoute,
+  StaffRoute: StaffRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
